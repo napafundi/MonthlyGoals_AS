@@ -3,4 +3,5 @@
     <string name="add_goal_form_title">Add Goal</string>
     <string name="add_goal_button_title">Add Goal</string>
     <string name="add_goal_form_title_hint">Goal Title</string>
+    <string name="add_goal_form_description_hint">Goal Description...</string>
 </resources>

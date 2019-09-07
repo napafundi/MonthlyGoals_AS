@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="fill_parent">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/AddGoalFormTitle"
-        android:text="@string/add_goal_form_title"
-        android:textSize="10pt" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/AddGoalFormTitle"
+            android:text="@string/add_goal_form_title"
+            android:textSize="10pt" />
 
-    <EditText
-        android:id="@+id/EditTextMonthlyGoalTitle"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/add_goal_form_title_hint"
-        android:inputType="textNoSuggestions" />
+        <EditText
+            android:id="@+id/EditTextMonthlyGoalTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_goal_form_title_hint"
+            android:inputType="textNoSuggestions"
+            android:importantForAutofill="no" />
 
         <DatePicker
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme"/>
+
+        <EditText
+            android:id="@+id/EditTextMonthlyGoalDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:importantForAutofill="no"
+            android:hint="@string/add_goal_form_description_hint"/>
 
 
     </LinearLayout>
