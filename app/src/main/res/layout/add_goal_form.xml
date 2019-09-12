@@ -1,66 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/AddGoalFormTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:text="@string/add_goal_form_title"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="36sp" />
-
-        <EditText
-            android:id="@+id/EditTextMonthlyGoalTitle"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_goal_form_title_hint"
-            android:inputType="textNoSuggestions"
-            android:importantForAutofill="no" />
-
-        <DatePicker
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme"/>
-
-        <EditText
-            android:id="@+id/EditTextMonthlyGoalDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:importantForAutofill="no"
-            android:hint="@string/add_goal_form_description_hint"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_above="@+id/AddGoalButtonBar">
 
         <LinearLayout
-            style="?android:attr/buttonBarStyle"
-            android:gravity="center|bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/ButtonAddGoal"
-                android:text="@string/add_goal_form_add_goal_button"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/AddGoalFormTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:background="@color/colorPrimary"
+                android:text="@string/add_goal_form_title"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="36sp" />
 
-            <Button
-                android:id="@+id/ButtonCancelGoal"
-                android:text="@string/add_goal_form_cancel_goal_button"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
+            <EditText
+                android:id="@+id/EditTextMonthlyGoalTitle"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:hint="@string/add_goal_form_title_hint"
+                android:inputType="textNoSuggestions"
+                android:importantForAutofill="no" />
+
+            <DatePicker
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme"/>
+
+            <EditText
+                android:id="@+id/EditTextMonthlyGoalDescription"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="@string/add_goal_form_description_hint"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine" />
         </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:id="@+id/AddGoalButtonBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/ButtonAddGoal"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/add_goal_form_add_goal_button" />
+
+        <Button
+            android:id="@+id/ButtonCancelGoal"
+            android:text="@string/add_goal_form_cancel_goal_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </LinearLayout>
-</ScrollView>
+</RelativeLayout>
