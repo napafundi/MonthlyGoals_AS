@@ -5,6 +5,7 @@
         android:id="@+id/action_add_goal"
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/add_goal_button_title"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:onClick="showAddGoalForm"/>
 
 </menu>

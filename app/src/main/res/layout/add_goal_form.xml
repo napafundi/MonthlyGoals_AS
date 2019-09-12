@@ -64,14 +64,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@color/colorButton"
+            android:textColor="@android:color/white"
             android:text="@string/add_goal_form_add_goal_button" />
 
         <Button
             android:id="@+id/ButtonCancelGoal"
             android:text="@string/add_goal_form_cancel_goal_button"
             style="?android:attr/buttonBarButtonStyle"
+            android:background="@color/colorButton"
+            android:textColor="@android:color/white"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
     </LinearLayout>
 </RelativeLayout>
