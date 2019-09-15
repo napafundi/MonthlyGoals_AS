@@ -1,5 +1,7 @@
 package com.napafundi.monthlygoals;
 
+import android.app.Activity;
+
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -9,10 +11,9 @@ import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.intent.Intents.intended;
-import static androidx.test.espresso.intent.matcher.ComponentNameMatchers.hasShortClassName;
-import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+import static androidx.test.espresso.contrib.ActivityResultMatchers.hasResultCode;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
 public class AddGoalActivityTest {
@@ -23,6 +24,6 @@ public class AddGoalActivityTest {
     @Test
     public void changeViewTo_MainActivity_OnAction_CancelClick() {
         onView(withId(R.id.ButtonCancelGoal)).perform(click());
-        intended(hasComponent(hasShortClassName(".MainActivity")));
+        assertThat(addGoalActivityTestCancel.getActivityResult(), hasResultCode(Activity.RESULT_CANCELED));
     }
 }

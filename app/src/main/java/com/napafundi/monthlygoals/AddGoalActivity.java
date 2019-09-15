@@ -1,7 +1,7 @@
 package com.napafundi.monthlygoals;
 
 import android.os.Bundle;
-import android.view.Window;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,5 +15,9 @@ public class AddGoalActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         setContentView(R.layout.add_goal_form);
+    }
+
+    public void cancelAddGoal(View view) {
+        finish();
     }
 }
