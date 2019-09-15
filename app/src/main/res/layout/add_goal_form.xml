@@ -33,6 +33,7 @@
                 android:importantForAutofill="no" />
 
             <DatePicker
+                android:id="@+id/DatePickerMonthlyGoalDate"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/AppTheme"/>
