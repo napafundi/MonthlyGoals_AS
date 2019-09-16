@@ -33,11 +33,4 @@
         android:gravity="center"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/goal_complete"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:text="Complete Goal" />
-
 </LinearLayout>
