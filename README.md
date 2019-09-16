@@ -37,3 +37,7 @@ An Android Application version of the Java MonthlyGoals application
   - #### Sept 14, 2019
     - Activities can be closed using the finish() method.
       - Testing activity results can be done by checking the results of the activity using the getActivityResult() method.
+      
+  - #### Sept 16, 2019
+    - Form validation support can be handled by using myField.setError("Error goes here") when the controller receives invalid input.
+      - This displays an error message connected to the field receiving invalid input.

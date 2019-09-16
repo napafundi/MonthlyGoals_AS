@@ -67,7 +67,8 @@
             android:layout_weight="1"
             android:background="@color/colorButton"
             android:textColor="@android:color/white"
-            android:text="@string/add_goal_form_add_goal_button" />
+            android:text="@string/add_goal_form_add_goal_button"
+            android:onClick="addGoal"/>
 
         <Button
             android:id="@+id/ButtonCancelGoal"

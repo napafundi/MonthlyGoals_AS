@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
@@ -27,9 +26,15 @@ public class AddGoalActivity extends AppCompatActivity {
      * data model
      * @param view
      */
-    public AlertDialog addGoal(View view) {
+    public void addGoal(View view) {
+        boolean error = false;
+
         final EditText titleField = findViewById(R.id.EditTextMonthlyGoalTitle);
-        String title = titleField.getText().toString();
+        String title = titleField.getText().toString().trim();
+        if (title.length() == 0 || title.length() > 30) {
+            error = true;
+            titleField.setError("Goal title must be non-empty and less than 30 characters long.");
+        }
 
         final DatePicker dateField = findViewById(R.id.DatePickerMonthlyGoalDate);
         int day = dateField.getDayOfMonth();
@@ -39,19 +44,18 @@ public class AddGoalActivity extends AppCompatActivity {
         cal.set(year, month, day);
 
         final EditText descField = findViewById(R.id.EditTextMonthlyGoalDescription);
-        String desc = descField.getText().toString();
+        String desc = descField.getText().toString().trim();
+        if (desc.length() == 0 || desc.length() > 60) {
+            error = true;
+            descField.setError("Goal description must be non-empty and less than 60 characters long.");
+        }
+
+        if (!error) {
+            MonthlyGoal.addGoal(title, cal, desc);
+        }
     }
 
     public void cancelAddGoal(View view) {
         finish();
-    }
-
-    private AlertDialog addGoalDialogBuilder(String title, String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setMessage(message)
-                .setTitle(title);
-
-        return builder.create();
     }
 }
