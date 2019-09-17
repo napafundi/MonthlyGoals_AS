@@ -1,7 +1,9 @@
 package com.napafundi.monthlygoals;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -11,27 +13,27 @@ import java.util.Locale;
  * @author Nick Pafundi
  *
  */
+@Entity
 public class Monthly {
+    @PrimaryKey
     private int monthly_id;
+
+    @ColumnInfo(name = "date")
     private Calendar date = Calendar.getInstance();
+
+    @ColumnInfo(name = "title")
     private String title;
+
+    @ColumnInfo(name = "description")
     private String description;
+
+    @ColumnInfo(name = "completed")
     private boolean completed;
 
     /**
      * @param rs The MySQL ResultSet containing the data to instantiate a Monthly object
      */
-    public Monthly(ResultSet rs) {
-        try {
-            monthly_id = rs.getInt("monthly_id");
-            date.setTime(rs.getDate("date"));
-            title = rs.getString("title");
-            description = rs.getString("description");
-            completed = rs.getBoolean("completed");
-        } catch(SQLException se) {
-            se.printStackTrace();
-        }
-    }
+    public Monthly() {}
 
     /**
      * Instantiates a Monthly object based on a given title, date and description. Completed is set to false by default. (You wouldn't create a goal you've already completed)
@@ -91,7 +93,11 @@ public class Monthly {
         this.completed = completed;
     }
 
-    public int getID() {
+    public int getMonthly_id() {
         return monthly_id;
+    }
+
+    public void setMonthly_id(int monthly_id) {
+        this.monthly_id = monthly_id;
     }
 }

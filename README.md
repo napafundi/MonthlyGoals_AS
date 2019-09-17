@@ -41,3 +41,5 @@ An Android Application version of the Java MonthlyGoals application
   - #### Sept 16, 2019
     - Form validation support can be handled by using myField.setError("Error goes here") when the controller receives invalid input.
       - This displays an error message connected to the field receiving invalid input.
+    - RecyclerViews use an adapter to to convert objects stored in data structures into a list's row item.
+      - The adapter needs a ViewHolder object which describes how each item row will be populated and act.

@@ -7,14 +7,32 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    private MonthlyGoalsViewModel monthlyGoalsViewModel;
+    private MonthlyGoalsAdapter monthlyGoalsAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        monthlyGoalsAdapter = new MonthlyGoalsAdapter(this, this);
+
+        monthlyGoalsViewModel = ViewModelProviders.of(this).get(MonthlyGoalsViewModel.class);
+        monthlyGoalsViewModel.getAllGoals().observe(this, goals -> monthlyGoalsAdapter.setData(goals));
+
+        RecyclerView recyclerView = findViewById(R.id.monthly_goals_recycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(monthlyGoalsAdapter);
 
     }
 

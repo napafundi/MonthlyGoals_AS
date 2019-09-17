@@ -10,9 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapter.MonthlyGoalsHolder> {
+
+    public MonthlyGoalsAdapter(MainActivity mainActivity, MainActivity mainActivity1) {
+    }
 
     public class MonthlyGoalsHolder extends RecyclerView.ViewHolder {
         public TextView titleTextView;
@@ -28,11 +31,7 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
         }
     }
 
-    private ArrayList<Monthly> monthlyGoals;
-
-    public MonthlyGoalsAdapter(ArrayList<Monthly> monthlyGoals) {
-        this.monthlyGoals = monthlyGoals;
-    }
+    private List<Monthly> monthlyGoals;
 
     @NonNull
     @Override
@@ -62,5 +61,10 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
     @Override
     public int getItemCount() {
         return monthlyGoals.size();
+    }
+
+    public void setData(List<Monthly> newData) {
+        this.monthlyGoals = newData;
+        notifyDataSetChanged();
     }
 }
