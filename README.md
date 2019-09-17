@@ -43,3 +43,8 @@ An Android Application version of the Java MonthlyGoals application
       - This displays an error message connected to the field receiving invalid input.
     - RecyclerViews use an adapter to to convert objects stored in data structures into a list's row item.
       - The adapter needs a ViewHolder object which describes how each item row will be populated and act.
+    - Android applications can use 'Rooms' to store data.
+      - They provide an abstraction layer over SQLite to improve database access.
+      - Room is also very useful for storing database information when a user is using an application offline. (Can store online DB info in Room)
+      - Entities are tables within a database.
+      - DAOs are classes that contain methods for interacting with the database.
