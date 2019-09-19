@@ -48,3 +48,7 @@ An Android Application version of the Java MonthlyGoals application
       - Room is also very useful for storing database information when a user is using an application offline. (Can store online DB info in Room)
       - Entities are tables within a database.
       - DAOs are classes that contain methods for interacting with the database.
+      
+  - #### Sept 19, 2019
+    - Certain data types need TypeConverters when being used in a Room database
+    

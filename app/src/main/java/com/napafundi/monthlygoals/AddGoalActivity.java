@@ -49,6 +49,13 @@ public class AddGoalActivity extends AppCompatActivity {
             error = true;
             descField.setError("Goal description must be non-empty and less than 60 characters long.");
         }
+
+        if (!error) {
+            MonthlyDao monthlyDao = MonthlyGoalsDatabase.getInstance(this).monthlyDao();
+            Monthly goal = new Monthly(title, cal, desc);
+            monthlyDao.save(goal);
+            finish();
+        }
     }
 
     public void cancelAddGoal(View view) {

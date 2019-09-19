@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -16,7 +15,7 @@ import java.util.Locale;
  */
 @Entity
 public class Monthly {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int monthly_id;
 
     @TypeConverters(CalendarTypeConverter.class)
@@ -32,9 +31,6 @@ public class Monthly {
     @ColumnInfo(name = "completed")
     private boolean completed;
 
-    /**
-     * @param rs The MySQL ResultSet containing the data to instantiate a Monthly object
-     */
     public Monthly() {}
 
     /**
@@ -43,9 +39,9 @@ public class Monthly {
      * @param date The date for the goal
      * @param desc The description of the goal
      */
-    public Monthly(String title, Date date, String desc) {
+    public Monthly(String title, Calendar date, String desc) {
         this.title = title;
-        this.date.setTime(date);
+        this.date = date;
         this.description = desc;
         completed = false;
     }
