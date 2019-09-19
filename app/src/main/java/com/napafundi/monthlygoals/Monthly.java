@@ -16,7 +16,7 @@ import java.util.Locale;
 @Entity
 public class Monthly {
     @PrimaryKey(autoGenerate = true)
-    private int monthly_id;
+    private int monthlyId;
 
     @TypeConverters(CalendarTypeConverter.class)
     @ColumnInfo(name = "date")
@@ -86,11 +86,11 @@ public class Monthly {
         this.completed = completed;
     }
 
-    public int getMonthly_id() {
-        return monthly_id;
+    public int getMonthlyId() {
+        return monthlyId;
     }
 
-    public void setMonthly_id(int monthly_id) {
-        this.monthly_id = monthly_id;
+    public void setMonthlyId(int monthlyId) {
+        this.monthlyId = monthlyId;
     }
 }

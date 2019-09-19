@@ -2,15 +2,15 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "0fc3a1335ea3146898576c127997750a",
+    "identityHash": "83489764562ac8a7b5af18153c088cc7",
     "entities": [
       {
         "tableName": "Monthly",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`monthly_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` TEXT, `title` TEXT, `description` TEXT, `completed` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`monthlyId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` TEXT, `title` TEXT, `description` TEXT, `completed` INTEGER NOT NULL)",
         "fields": [
           {
-            "fieldPath": "monthly_id",
-            "columnName": "monthly_id",
+            "fieldPath": "monthlyId",
+            "columnName": "monthlyId",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -41,7 +41,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "monthly_id"
+            "monthlyId"
           ],
           "autoGenerate": true
         },
@@ -52,7 +52,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0fc3a1335ea3146898576c127997750a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '83489764562ac8a7b5af18153c088cc7')"
     ]
   }
 }
