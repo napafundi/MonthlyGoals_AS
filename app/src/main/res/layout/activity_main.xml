@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <view class="androidx.appcompat.app.AlertController$RecycleListView"
+    <view class="androidx.recyclerview.widget.RecyclerView"
         android:id="@+id/monthly_goals_recycler"
         android:scrollbars="vertical"
         android:layout_width="match_parent"

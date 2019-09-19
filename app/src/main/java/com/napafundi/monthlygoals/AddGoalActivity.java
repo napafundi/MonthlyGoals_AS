@@ -49,10 +49,6 @@ public class AddGoalActivity extends AppCompatActivity {
             error = true;
             descField.setError("Goal description must be non-empty and less than 60 characters long.");
         }
-
-        if (!error) {
-            MonthlyGoal.addGoal(title, cal, desc);
-        }
     }
 
     public void cancelAddGoal(View view) {
