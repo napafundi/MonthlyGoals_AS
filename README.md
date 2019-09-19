@@ -50,5 +50,6 @@ An Android Application version of the Java MonthlyGoals application
       - DAOs are classes that contain methods for interacting with the database.
       
   - #### Sept 19, 2019
-    - Certain data types need TypeConverters when being used in a Room database
-    
+    - Certain data types need TypeConverters when being used in a Room database.
+    - Testing room databases is more effective by creating an in-memory version of the database. (Mocking the DAO classes)
+      - This prevents the need for a full database to be created when not testing the entire database.
