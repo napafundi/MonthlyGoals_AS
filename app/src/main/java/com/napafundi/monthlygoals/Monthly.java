@@ -59,12 +59,7 @@ public class Monthly {
      * @return Returns a string representation of the goal's month. If the month's int value is outside the bounds, will display "error"
      */
     public String getMonth() {
-        int monthNum = Calendar.MONTH;
-        String month = "error";
-        if (monthNum >= 0 && monthNum <= 11) {
-            month = date.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
-        }
-        return month;
+        return date.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
     }
 
     public String getTitle() {
