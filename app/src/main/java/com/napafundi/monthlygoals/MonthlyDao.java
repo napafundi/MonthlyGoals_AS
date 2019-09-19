@@ -27,4 +27,7 @@ public interface MonthlyDao {
 
     @Query("SELECT * FROM Monthly")
     LiveData<List<Monthly>> findAll();
+
+    @Query("SELECT * FROM monthly")
+    List<Monthly> findAllList();
 }

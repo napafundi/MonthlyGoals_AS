@@ -26,4 +26,8 @@ public abstract class MonthlyGoalsDatabase extends RoomDatabase {
             return INSTANCE;
         }
     }
+
+    public MonthlyDao getMonthlyDao() {
+        return monthlyDao();
+    }
 }
