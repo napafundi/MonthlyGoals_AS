@@ -3,6 +3,7 @@ package com.napafundi.monthlygoals;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -18,6 +19,7 @@ public class Monthly {
     @PrimaryKey
     private int monthly_id;
 
+    @TypeConverters(CalendarTypeConverter.class)
     @ColumnInfo(name = "date")
     private Calendar date = Calendar.getInstance();
 
