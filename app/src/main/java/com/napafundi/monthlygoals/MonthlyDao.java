@@ -22,6 +22,9 @@ public interface MonthlyDao {
     @Update
     void update(Monthly goal);
 
+    @Query("UPDATE monthly SET completed=:comp WHERE monthlyId=:id")
+    void updateCompleted(boolean comp, int id);
+
     @Delete
     void delete(Monthly goal);
 

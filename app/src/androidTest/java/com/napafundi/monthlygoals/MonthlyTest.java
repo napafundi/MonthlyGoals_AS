@@ -61,4 +61,20 @@ public class MonthlyTest {
         List<Monthly> updatedGoals = monthlyDao.findAllList();
         Assert.assertTrue(updatedGoals.isEmpty());
     }
+
+    @Test
+    public void updateCompleted() throws Exception {
+        String title = "test delete title";
+        Calendar date = Calendar.getInstance();
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        String desc = "test delete desc";
+        Monthly goal = new Monthly(title, date, desc);
+        monthlyDao.save(goal);
+        List<Monthly> goals = monthlyDao.findAllList();
+        Monthly test_goal = goals.get(0);
+        Assert.assertFalse(test_goal.isCompleted());
+        monthlyDao.updateCompleted(true, test_goal.getMonthlyId());
+        goals = monthlyDao.findAllList();
+        Assert.assertTrue(goals.get(0).isCompleted());
+    }
 }

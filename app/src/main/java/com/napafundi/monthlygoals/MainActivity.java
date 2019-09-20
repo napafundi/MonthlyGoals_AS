@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,5 +59,9 @@ public class MainActivity extends AppCompatActivity {
      */
     public void showAddGoalForm(MenuItem item) {
         startActivity(new Intent(MainActivity.this, AddGoalActivity.class));
+    }
+
+    public void updateCompleted(View view) {
+        boolean checked = ((CheckBox) view).isChecked();
     }
 }
