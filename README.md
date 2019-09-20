@@ -69,5 +69,8 @@ An Android Application version of the Java MonthlyGoals application
             - H(X) or h(X): Draws a horizontal line to the position at x.
             - V(X) or v(X): Draws a vertical line to the position at y.
       - Rendering these drawables is time and memory consuming, best used for simple and flat graphics.
+      - Read about attaching onClickListeners() to the recyclerView item elements.
+        - Different approaches can be used. Although the method I found (easiest for now) can become inefficient with larger data sets.
+          - It relies on notifyDataSetChanged() which is a costly method call.
       
       
