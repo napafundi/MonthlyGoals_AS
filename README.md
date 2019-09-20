@@ -53,3 +53,7 @@ An Android Application version of the Java MonthlyGoals application
     - Certain data types need TypeConverters when being used in a Room database.
     - Testing room databases is more effective by creating an in-memory version of the database. (Mocking the DAO classes)
       - This prevents the need for a full database to be created when not testing the entire database.
+      
+  - #### Sept 20, 2019
+    - Certain DAO methods require the primary key of the data to be executed.
+      - This is obvious for the @Delete method. So when deleting a row from the db, if using the standard @Delete, the object passed in must be the entity with a primary key.
