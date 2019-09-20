@@ -58,3 +58,16 @@ An Android Application version of the Java MonthlyGoals application
     - Certain DAO methods require the primary key of the data to be executed.
       - This is obvious for the @Delete method. So when deleting a row from the db, if using the standard @Delete, the object passed in must be the entity with a primary key.
     - viewHolder view elements can be given specific tags (e.g. position, name) within the adapter's onBindViewHolder method to make other interactions easier.
+    - Android provides the ability to created animated drawables through vectorDrawables.
+      - The advantage of using vectors, is that they do not lose quality when scaled up or down.
+      - The vectors contain data paths that tell how to draw the element.
+        - Basic path commands are comprised of characters followed by numbers dictating the drawing action.
+            - Uppercase letters mean "absolute position" while lowercase letters mean "relative position".
+            - M(X,Y) or m(X,Y): Move the cursor to the given x,y position.
+            - Z or z: Draws a line from the current cursor position to the start position of the path.
+            - L(X,Y) or l(X,Y): Draws a line from the current position to the given x,y position.
+            - H(X) or h(X): Draws a horizontal line to the position at x.
+            - V(X) or v(X): Draws a vertical line to the position at y.
+      - Rendering these drawables is time and memory consuming, best used for simple and flat graphics.
+      
+      
