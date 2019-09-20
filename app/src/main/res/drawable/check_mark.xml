@@ -13,7 +13,7 @@
     <group android:name="checkMark">
         <path
             android:name="tick"
-            android:pathData="M6,11 10,0 10,0"
+            android:pathData="M6,11 l0,0 l0,0"
             android:strokeColor="@color/colorAccent"
             android:strokeWidth="1"/>
     </group>

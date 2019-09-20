@@ -9,6 +9,7 @@
     android:background="@color/colorAccent">
 
     <ImageView
+        android:id="@+id/check_mark"
         app:srcCompat="@drawable/animated_check"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
