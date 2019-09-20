@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/completed_goal_toast"
     android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:padding="8dp"
-    android:background="@color/colorAccent">
+    android:background="@android:color/darker_gray">
 
     <ImageView
         android:id="@+id/check_mark"
@@ -20,6 +20,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/congratulations_text"/>
+        android:text="@string/congratulations_text"
+        android:textSize="30dp"
+        android:gravity="center"/>
 
 </LinearLayout>
