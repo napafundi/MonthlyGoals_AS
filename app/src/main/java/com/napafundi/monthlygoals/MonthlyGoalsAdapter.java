@@ -1,10 +1,12 @@
 package com.napafundi.monthlygoals;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,26 +15,31 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapter.MonthlyGoalsHolder> {
 
-    public MonthlyGoalsAdapter(MainActivity mainActivity, MainActivity mainActivity1) {
+public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapter.MonthlyGoalsHolder> {
+    private List<Monthly> monthlyGoals = new ArrayList<>();
+    private int globalPosition = -1;
+
+    MonthlyGoalsAdapter(MainActivity mainActivity, MainActivity mainActivity1) {
     }
 
-    public class MonthlyGoalsHolder extends RecyclerView.ViewHolder {
-        public TextView titleTextView;
-        public TextView dateTextView;
-        public CheckBox completedCheckBox;
+    class MonthlyGoalsHolder extends RecyclerView.ViewHolder {
+        LinearLayout monthlyGoalRow;
+        TextView titleTextView;
+        TextView dateTextView;
+        CheckBox completedCheckBox;
 
-        public MonthlyGoalsHolder(@NonNull View itemView) {
+        MonthlyGoalsHolder(@NonNull View itemView) {
             super(itemView);
 
+            monthlyGoalRow = itemView.findViewById(R.id.monthly_goal_row);
             titleTextView = itemView.findViewById(R.id.goal_title);
             dateTextView = itemView.findViewById(R.id.goal_month);
             completedCheckBox = itemView.findViewById(R.id.goal_completed);
         }
     }
 
-    private List<Monthly> monthlyGoals = new ArrayList<>();
+
 
     @NonNull
     @Override
@@ -58,6 +65,19 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
         CheckBox completedCheckBox = holder.completedCheckBox;
         completedCheckBox.setChecked(goal.isCompleted());
         holder.completedCheckBox.setTag(position);
+
+        holder.monthlyGoalRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                globalPosition = position;
+                notifyDataSetChanged();
+            }
+        });
+        if (globalPosition == position) {
+            holder.monthlyGoalRow.setBackgroundColor(Color.LTGRAY);
+        } else {
+            holder.monthlyGoalRow.setBackgroundColor(Color.TRANSPARENT);
+        }
     }
 
     @Override
@@ -65,12 +85,12 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
         return monthlyGoals.size();
     }
 
-    public void setData(List<Monthly> newData) {
+    void setData(List<Monthly> newData) {
         this.monthlyGoals = newData;
         notifyDataSetChanged();
     }
 
-    public List<Monthly> getMonthlyGoals() {
+    List<Monthly> getMonthlyGoals() {
         return monthlyGoals;
     }
 }

@@ -1,7 +1,7 @@
 package com.napafundi.monthlygoals;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             toast.setView(layout);
             toast.show();
             ImageView checkMark = layout.findViewById(R.id.check_mark);
-            ((AnimatedVectorDrawable) checkMark.getDrawable()).start();
+            ((Animatable) checkMark.getDrawable()).start();
         }
     }
 }
