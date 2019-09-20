@@ -57,3 +57,4 @@ An Android Application version of the Java MonthlyGoals application
   - #### Sept 20, 2019
     - Certain DAO methods require the primary key of the data to be executed.
       - This is obvious for the @Delete method. So when deleting a row from the db, if using the standard @Delete, the object passed in must be the entity with a primary key.
+    - viewHolder view elements can be given specific tags (e.g. position, name) within the adapter's onBindViewHolder method to make other interactions easier.
