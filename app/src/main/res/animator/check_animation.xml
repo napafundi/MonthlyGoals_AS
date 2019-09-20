@@ -13,7 +13,7 @@
         android:duration="@android:integer/config_shortAnimTime"
         android:propertyName="pathData"
         android:valueFrom="M6,11 13.5,4 1,0"
-        android:valueTo="m6,11 13.5,4 18,-7"
+        android:valueTo="M6,11 13.5,4 18,-7"
         android:valueType="pathType"/>
 
 </set>

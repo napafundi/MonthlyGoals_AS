@@ -2,11 +2,14 @@ package com.napafundi.monthlygoals;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -71,5 +74,15 @@ public class MainActivity extends AppCompatActivity {
         int rowId = (int) view.getTag();    // Tag is set in MonthlyGoalsAdapter.onBindViewHolder() to be the corresponding row position
         int goalId = monthlyGoalsAdapter.getMonthlyGoals().get(rowId).getMonthlyId();
         monthlyGoalsViewModel.updateCompleted(checked, goalId);
+        // Display a toast with an animated check mark when a goal is completed.
+        if (checked) {
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.completed_goal_toast, findViewById(R.id.completed_goal_toast));
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_SHORT);
+            toast.setView(layout);
+            toast.show();
+        }
     }
 }
