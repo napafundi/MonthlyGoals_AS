@@ -57,7 +57,7 @@ public class MonthlyTest {
         monthlyDao.save(goal);
         List<Monthly> goals = monthlyDao.findAllList();
         Assert.assertThat(goals.get(0).getTitle(), equalTo(goal.getTitle()));
-        monthlyDao.delete(goal);
+        monthlyDao.delete(goals.get(0));
         List<Monthly> updatedGoals = monthlyDao.findAllList();
         Assert.assertTrue(updatedGoals.isEmpty());
     }
