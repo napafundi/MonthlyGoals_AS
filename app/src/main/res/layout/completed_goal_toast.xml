@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/completed_goal_toast"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -8,10 +9,16 @@
     android:background="@color/colorAccent">
 
     <ImageView
-        android:src=""
+        app:srcCompat="@drawable/animated_check"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:contentDescription="@string/animated_check_description">
     </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/congratulations_text"/>
 
 </LinearLayout>

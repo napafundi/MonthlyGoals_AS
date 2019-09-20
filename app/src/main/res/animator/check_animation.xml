@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_interpolator"
+    android:ordering="sequentially"
+    android:shareInterpolator="false">
+    <objectAnimator
+        android:duration="@android:integer/config_shortAnimTime"
+        android:propertyName="pathData"
+        android:valueFrom="M6,11 10,0 10,0"
+        android:valueTo="M6,11 13.5,4 10,0"
+        android:valueType="pathType"/>
+    <objectAnimator
+        android:duration="@android:integer/config_shortAnimTime"
+        android:propertyName="pathData"
+        android:valueFrom="M6,11 13.5,4 1,0"
+        android:valueTo="m6,11 13.5,4 18,-7"
+        android:valueType="pathType"/>
+
+</set>

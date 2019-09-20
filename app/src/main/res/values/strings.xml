@@ -6,4 +6,6 @@
     <string name="add_goal_form_description_hint">Goal Description...</string>
     <string name="add_goal_form_add_goal_button">Add Goal</string>
     <string name="add_goal_form_cancel_goal_button">Cancel</string>
+    <string name="congratulations_text">Congratulations!</string>
+    <string name="animated_check_description">A checkmark animation</string>
 </resources>
