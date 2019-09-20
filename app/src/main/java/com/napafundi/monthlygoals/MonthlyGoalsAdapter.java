@@ -57,6 +57,7 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
 
         CheckBox completedCheckBox = holder.completedCheckBox;
         completedCheckBox.setChecked(goal.isCompleted());
+        holder.completedCheckBox.setTag(position);
     }
 
     @Override
@@ -67,5 +68,9 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
     public void setData(List<Monthly> newData) {
         this.monthlyGoals = newData;
         notifyDataSetChanged();
+    }
+
+    public List<Monthly> getMonthlyGoals() {
+        return monthlyGoals;
     }
 }

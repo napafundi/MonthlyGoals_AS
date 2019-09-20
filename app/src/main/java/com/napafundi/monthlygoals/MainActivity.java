@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private MonthlyGoalsViewModel monthlyGoalsViewModel;
     private MonthlyGoalsAdapter monthlyGoalsAdapter;
+    private RecyclerView recyclerView;
 
 
     @Override
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         monthlyGoalsViewModel = ViewModelProviders.of(this).get(MonthlyGoalsViewModel.class);
         monthlyGoalsViewModel.getAllGoals().observe(this, goals -> monthlyGoalsAdapter.setData(goals));
 
-        RecyclerView recyclerView = findViewById(R.id.monthly_goals_recycler);
+        recyclerView = findViewById(R.id.monthly_goals_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -61,7 +62,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, AddGoalActivity.class));
     }
 
+    /**
+     * Updated the goal displayed within the same row as the checkbox as completed in the db
+     * @param view The checkbox clicked
+     */
     public void updateCompleted(View view) {
         boolean checked = ((CheckBox) view).isChecked();
+        int rowId = (int) view.getTag();    // Tag is set in MonthlyGoalsAdapter.onBindViewHolder() to be the corresponding row position
+        int goalId = monthlyGoalsAdapter.getMonthlyGoals().get(rowId).getMonthlyId();
+        monthlyGoalsViewModel.updateCompleted(checked, goalId);
     }
 }

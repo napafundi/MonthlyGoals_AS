@@ -32,4 +32,8 @@ public class MonthlyGoalsViewModel extends AndroidViewModel {
     void deleteGoal(Monthly goal) {
         executorService.execute(() -> monthlyDao.delete(goal));
     }
+
+    void updateCompleted(boolean comp, int id) {
+        executorService.execute(() -> monthlyDao.updateCompleted(comp, id));
+    }
 }
