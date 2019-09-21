@@ -72,5 +72,8 @@ An Android Application version of the Java MonthlyGoals application
       - Read about attaching onClickListeners() to the recyclerView item elements.
         - Different approaches can be used. Although the method I found (easiest for now) can become inefficient with larger data sets.
           - It relies on notifyDataSetChanged() which is a costly method call.
+          
+  - #### Sept 21, 2019
+    - Implementing a swipe to "do action" functionality for RecyclerView uses the ItemTouchHelper class.
       
       
