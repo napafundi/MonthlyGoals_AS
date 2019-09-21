@@ -19,6 +19,7 @@ import java.util.List;
 public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapter.MonthlyGoalsHolder> {
     private List<Monthly> monthlyGoals = new ArrayList<>();
     private int globalPosition = -1;
+    private Context context;
 
     MonthlyGoalsAdapter(MainActivity mainActivity, MainActivity mainActivity1) {
     }
@@ -45,6 +46,7 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
     @Override
     public MonthlyGoalsAdapter.MonthlyGoalsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
+        this.context = context;
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View monthlyGoalsView = inflater.inflate(R.layout.monthly_goal_row, parent, false);
@@ -94,5 +96,9 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
 
     List<Monthly> getMonthlyGoals() {
         return monthlyGoals;
+    }
+
+    Context getContext() {
+        return context;
     }
 }
