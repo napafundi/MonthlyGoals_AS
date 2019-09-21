@@ -75,5 +75,8 @@ An Android Application version of the Java MonthlyGoals application
           
   - #### Sept 21, 2019
     - Implementing a swipe to "do action" functionality for RecyclerView uses the ItemTouchHelper class.
+    - Android icons can be obtained from their website.
+      - When using a downloaded icon, add a new "vector asset" to the drawables directory and select "from SVG/PNG".
+        - This will create an xml file containing the icon drawable.
       
       
