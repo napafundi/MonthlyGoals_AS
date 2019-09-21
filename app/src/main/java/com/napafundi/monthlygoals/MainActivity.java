@@ -1,5 +1,6 @@
 package com.napafundi.monthlygoals;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private MonthlyGoalsViewModel monthlyGoalsViewModel;
     private MonthlyGoalsAdapter monthlyGoalsAdapter;
     private RecyclerView recyclerView;
+    private Context context = this;
 
 
     @Override
@@ -41,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(monthlyGoalsAdapter);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback(monthlyGoalsAdapter, context));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
     }
 
