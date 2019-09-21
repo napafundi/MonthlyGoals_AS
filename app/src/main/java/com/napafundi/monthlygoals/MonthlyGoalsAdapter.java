@@ -66,6 +66,7 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
         completedCheckBox.setChecked(goal.isCompleted());
         holder.completedCheckBox.setTag(position);
 
+        // Make rows selectable
         holder.monthlyGoalRow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +74,7 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
                 notifyDataSetChanged();
             }
         });
+        // Change background color of selected row, revert colors of rows that are no longer selected
         if (globalPosition == position) {
             holder.monthlyGoalRow.setBackgroundColor(Color.LTGRAY);
         } else {
