@@ -78,5 +78,7 @@ An Android Application version of the Java MonthlyGoals application
     - Android icons can be obtained from their website.
       - When using a downloaded icon, add a new "vector asset" to the drawables directory and select "from SVG/PNG".
         - This will create an xml file containing the icon drawable.
+    - SnackBars are UI elements that can appear on the screen to prompt users for actions.
+      - One common application of the SnackBar is the "undo" when deleting an item (think Gmail app).
       
       
