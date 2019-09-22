@@ -13,17 +13,17 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
+    private MonthlyGoalsViewModel monthlyGoalsViewModel;
     private MonthlyGoalsAdapter mAdapter;
-    private Context context;
-    private Drawable icon;
-    private final ColorDrawable background;
+    private Drawable trashIcon;
+    private ColorDrawable background;
 
-    public SwipeToDeleteCallback(MonthlyGoalsAdapter mAdapter, Context context) {
-        super(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+    public SwipeToDeleteCallback(Context context, MonthlyGoalsViewModel monthlyGoalsViewModel, MonthlyGoalsAdapter mAdapter) {
+        super(0,ItemTouchHelper.LEFT);
+        this.monthlyGoalsViewModel = monthlyGoalsViewModel;
         this.mAdapter = mAdapter;
-        this.context = context;
-        icon = ContextCompat.getDrawable(context, R.drawable.ic_delete_black);
-        background = new ColorDrawable(Color.RED);
+        trashIcon = ContextCompat.getDrawable(context, R.drawable.baseline_delete_24);
+        background = new ColorDrawable(Color.GRAY);
     }
     @Override
     public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -33,37 +33,35 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
         int position = viewHolder.getAdapterPosition();
+        Monthly goal = mAdapter.getMonthlyGoals().get(position);
+        monthlyGoalsViewModel.deleteGoal(goal);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
         View itemView = viewHolder.itemView;
-        int backgroundCornerOffset = 20; // Ensures background is behind the rounded corners of itemView
+        int backgroundCornerOffset = 10; // Ensures background is behind the rounded corners of itemView
 
-        int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
-        int iconTop = itemView.getTop() + (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
-        int iconBottom = iconTop + icon.getIntrinsicHeight();
+        int iconMargin = (itemView.getHeight() - trashIcon.getIntrinsicHeight()) / 2;
+        int iconTop = itemView.getTop() + (itemView.getHeight() - trashIcon.getIntrinsicHeight()) / 2;
+        int iconBottom = iconTop + trashIcon.getIntrinsicHeight();
 
-        if (dX > 0) { // Right swipe case
-            int iconLeft = itemView.getLeft() + iconMargin + icon.getIntrinsicWidth();
-            int iconRight = itemView.getLeft() + iconMargin;
-            icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
-
-            background.setBounds(itemView.getLeft(), itemView.getTop(),
-                    itemView.getLeft() + ((int) dX) + backgroundCornerOffset,
-                    itemView.getBottom());
-        } else if (dX < 0) { // Left swipe case
-            int iconLeft = itemView.getRight() - iconMargin - icon.getIntrinsicWidth();
+        if (dX < 0) { // Left swipe case
+            if ((int)Math.abs(dX) > (itemView.getWidth() / 3)) {
+                background = new ColorDrawable(Color.RED);
+            }
+            int iconLeft = itemView.getRight() - iconMargin - trashIcon.getIntrinsicWidth();
             int iconRight = itemView.getRight() - iconMargin;
-            icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
+            trashIcon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
 
             background.setBounds(itemView.getRight() + ((int) dX) - backgroundCornerOffset,
-                    itemView.getTop(), itemView.getLeft(), itemView.getBottom());
-        } else { // No swipe case
+                    itemView.getTop(), itemView.getRight(), itemView.getBottom());
+        } else if (dX == 0) { // No swipe case
             background.setBounds(0,0,0,0);
         }
         background.draw(c);
-        background.draw(c);
+        trashIcon.draw(c);
     }
 }

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(monthlyGoalsAdapter);
 
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback(monthlyGoalsAdapter, context));
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback(context, monthlyGoalsViewModel, monthlyGoalsAdapter));
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
     }
