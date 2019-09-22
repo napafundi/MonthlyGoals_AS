@@ -1,5 +1,6 @@
 package com.napafundi.monthlygoals;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,14 +13,18 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
     private MonthlyGoalsViewModel monthlyGoalsViewModel;
     private MonthlyGoalsAdapter mAdapter;
+    private Activity context;
     private Drawable trashIcon;
     private ColorDrawable background;
 
     public SwipeToDeleteCallback(Context context, MonthlyGoalsViewModel monthlyGoalsViewModel, MonthlyGoalsAdapter mAdapter) {
         super(0,ItemTouchHelper.LEFT);
+        this.context = (Activity) context;
         this.monthlyGoalsViewModel = monthlyGoalsViewModel;
         this.mAdapter = mAdapter;
         trashIcon = ContextCompat.getDrawable(context, R.drawable.baseline_delete_24);
@@ -63,5 +68,15 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
         }
         background.draw(c);
         trashIcon.draw(c);
+    }
+
+    private void showUndoSnackBar() {
+        View view = context.findViewById(R.id.monthly_goals_recycler);
+        Snackbar snackbar = Snackbar.make(view, R.string.snack_bar_goal_deleted, Snackbar.LENGTH_LONG);
+        snackbar.setAction(R.string.snack_bar_undo_goal_deleted, v -> undoDelete());
+        snackbar.show();
+    }
+
+    private void undoDelete() {
     }
 }
