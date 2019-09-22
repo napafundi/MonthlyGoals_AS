@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
     private MonthlyGoalsViewModel monthlyGoalsViewModel;
     private MonthlyGoalsAdapter mAdapter;
+    private Monthly deletedGoal;
     private Activity context;
     private Drawable trashIcon;
     private ColorDrawable background;
@@ -38,9 +39,10 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
         int position = viewHolder.getAdapterPosition();
-        Monthly goal = mAdapter.getMonthlyGoals().get(position);
-        monthlyGoalsViewModel.deleteGoal(goal);
+        this.deletedGoal = mAdapter.getMonthlyGoals().get(position);
+        monthlyGoalsViewModel.deleteGoal(deletedGoal);
         mAdapter.notifyDataSetChanged();
+        showUndoSnackBar();
     }
 
     @Override
@@ -71,12 +73,14 @@ public class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
     }
 
     private void showUndoSnackBar() {
-        View view = context.findViewById(R.id.monthly_goals_recycler);
+        View view = context.findViewById(R.id.main_activity);
         Snackbar snackbar = Snackbar.make(view, R.string.snack_bar_goal_deleted, Snackbar.LENGTH_LONG);
         snackbar.setAction(R.string.snack_bar_undo_goal_deleted, v -> undoDelete());
         snackbar.show();
     }
 
     private void undoDelete() {
+        monthlyGoalsViewModel.saveGoal(deletedGoal);
+        mAdapter.notifyDataSetChanged();
     }
 }
