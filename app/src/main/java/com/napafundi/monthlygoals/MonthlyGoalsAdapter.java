@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +23,11 @@ import java.util.List;
 public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapter.MonthlyGoalsHolder> {
     private List<Monthly> monthlyGoals = new ArrayList<>();
     private int globalPosition = -1;
+    private MainActivity mainActivity;
+    private Snackbar goalSnackbar;
 
     MonthlyGoalsAdapter(MainActivity mainActivity, MainActivity mainActivity1) {
+        this.mainActivity = mainActivity;
     }
 
     class MonthlyGoalsHolder extends RecyclerView.ViewHolder {
@@ -81,10 +86,13 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
             Drawable background = holder.monthlyGoalRow.getBackground();
             if (background instanceof ColorDrawable) {
                 int color = ((ColorDrawable) background).getColor();
-                if (color == Color.LTGRAY) { // Revert background to transparent if selecting the already selected row
+                if (color == Color.LTGRAY) { // Revert background to transparent if selecting the already selected row, hide goal description
                     holder.monthlyGoalRow.setBackgroundColor(Color.TRANSPARENT);
-                } else {
+                    goalSnackbar.dismiss();
+                } else { // Make background light gray to show it is selected, display goal's description within a snackbar
                     holder.monthlyGoalRow.setBackgroundColor(Color.LTGRAY);
+                    String desc = goal.getDescription();
+                    showGoalDescriptionSnackBar(desc);
                 }
             }
         } else {
@@ -104,5 +112,11 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
 
     List<Monthly> getMonthlyGoals() {
         return monthlyGoals;
+    }
+
+    private void showGoalDescriptionSnackBar(String desc) {
+        View view = mainActivity.findViewById(R.id.main_activity);
+        goalSnackbar = Snackbar.make(view, desc, Snackbar.LENGTH_INDEFINITE);
+        goalSnackbar.show();
     }
 }
