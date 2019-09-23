@@ -10,4 +10,6 @@
     <string name="animated_check_description">A checkmark animation</string>
     <string name="snack_bar_goal_deleted">1 Goal Deleted</string>
     <string name="snack_bar_undo_goal_deleted">Undo</string>
+    <string name="monthly_goal_row_title">Title</string>
+    <string name="monthly_goal_row_date">Date</string>
 </resources>
