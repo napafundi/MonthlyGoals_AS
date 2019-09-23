@@ -2,6 +2,8 @@ package com.napafundi.monthlygoals;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +78,15 @@ public class MonthlyGoalsAdapter extends RecyclerView.Adapter<MonthlyGoalsAdapte
         });
         // Change background color of selected row, revert colors of rows that are no longer selected
         if (globalPosition == position) {
-            holder.monthlyGoalRow.setBackgroundColor(Color.LTGRAY);
+            Drawable background = holder.monthlyGoalRow.getBackground();
+            if (background instanceof ColorDrawable) {
+                int color = ((ColorDrawable) background).getColor();
+                if (color == Color.LTGRAY) { // Revert background to transparent if selecting the already selected row
+                    holder.monthlyGoalRow.setBackgroundColor(Color.TRANSPARENT);
+                } else {
+                    holder.monthlyGoalRow.setBackgroundColor(Color.LTGRAY);
+                }
+            }
         } else {
             holder.monthlyGoalRow.setBackgroundColor(Color.TRANSPARENT);
         }

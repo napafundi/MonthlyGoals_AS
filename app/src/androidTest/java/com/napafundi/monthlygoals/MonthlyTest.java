@@ -6,6 +6,7 @@ import androidx.room.Room;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,8 +16,6 @@ import org.junit.runner.RunWith;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
-
-import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(AndroidJUnit4.class)
 public class MonthlyTest {
@@ -44,7 +43,7 @@ public class MonthlyTest {
         Monthly goal = new Monthly(title, date, desc);
         monthlyDao.save(goal);
         List<Monthly> goals = monthlyDao.findAllList();
-        Assert.assertThat(goals.get(0).getTitle(), equalTo(goal.getTitle()));
+        Assert.assertThat(goals.get(0).getTitle(), Matchers.equalTo(goal.getTitle()));
     }
 
     @Test
@@ -56,7 +55,7 @@ public class MonthlyTest {
         Monthly goal = new Monthly(title, date, desc);
         monthlyDao.save(goal);
         List<Monthly> goals = monthlyDao.findAllList();
-        Assert.assertThat(goals.get(0).getTitle(), equalTo(goal.getTitle()));
+        Assert.assertThat(goals.get(0).getTitle(), Matchers.equalTo(goal.getTitle()));
         monthlyDao.delete(goals.get(0));
         List<Monthly> updatedGoals = monthlyDao.findAllList();
         Assert.assertTrue(updatedGoals.isEmpty());
